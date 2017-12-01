@@ -145,7 +145,7 @@ add_executable(posicion_usuario_nodo src/posicion_usuario_nodo.cpp)
 add_executable(emocion_usuario_nodo src/emocion_usuario_nodo.cpp)
 add_executable(dialogo_nodo src/dialogo_nodo.cpp)
 add_executable(matematico_nodo src/matematico_nodo.cpp)
-
+add_executable(reloj_nodo src/reloj_nodo.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -174,6 +174,9 @@ target_link_libraries(dialogo_nodo
    ${catkin_LIBRARIES}
 )
 target_link_libraries(matematico_nodo
+   ${catkin_LIBRARIES}
+)
+target_link_libraries(reloj_nodo
    ${catkin_LIBRARIES}
 )
 

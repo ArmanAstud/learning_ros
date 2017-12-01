@@ -9,6 +9,7 @@
 
 using namespace std;
 
+//variables globales
 bool _info = false;
 string nombre;
 int edad;
@@ -22,7 +23,7 @@ string emocion;
 
 ros::Publisher pub_usuario;
 
-
+//funcion publicar toda la informacion
 void mostrar_todo(bool info,bool pos, bool emo)
 {
 	if(info == true && pos==true && emo==true)
@@ -45,6 +46,7 @@ void mostrar_todo(bool info,bool pos, bool emo)
 	}
 }
 
+//funcion que guarda el topic 'inf_pers_topic'
 void funcionCallback_info(const interaccion::inf_personal_usuario::ConstPtr& msg)
 {
 
@@ -55,7 +57,7 @@ void funcionCallback_info(const interaccion::inf_personal_usuario::ConstPtr& msg
 	mostrar_todo(_info, _pos, _emo);
 }
 
-	
+//funcion que guarda el topic 'pos_usuario'	
 void funcionCallback_pos(const interaccion::pos_usuario::ConstPtr& msg)
 {
 
@@ -66,6 +68,7 @@ void funcionCallback_pos(const interaccion::pos_usuario::ConstPtr& msg)
 	mostrar_todo(_info, _pos, _emo);
 }
 
+//funcion que guarda el topic 'emocion_topic'
 void funcionCallback_emocion(const std_msgs::String::ConstPtr& msg)
 {
 
@@ -75,15 +78,15 @@ void funcionCallback_emocion(const std_msgs::String::ConstPtr& msg)
 }
 
 
-
+//funcion principal
 int main(int arcg, char **argv)
 {
+	//iniciar ROS
 	ros::init(arcg,argv,"empaquetador_nodo");
 	ros::NodeHandle empaquetador_nodo;
-
 	ROS_INFO("empaquetador_nodo creado y registrado");
 
-
+	//inicializar Subscriptores y publicadores
 	ros::Subscriber subscriptor_info = empaquetador_nodo.subscribe("inf_pers_topic", 0, funcionCallback_info);
 	ros::Subscriber subscriptor_pos = empaquetador_nodo.subscribe("pos_usuario_topic", 0, funcionCallback_pos);
 	ros::Subscriber subscriptor_emo = empaquetador_nodo.subscribe("emocion_topic", 0, funcionCallback_emocion);

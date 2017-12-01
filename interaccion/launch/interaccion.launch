@@ -12,5 +12,7 @@
 
 	<node pkg="interaccion" name="matematico_nodo" type="matematico_nodo" respawn="true" output="screen" launch-prefix="xterm -e"/>
 
+	<node pkg="interaccion" name="reloj_nodo" type="reloj_nodo" respawn="true" output="screen" launch-prefix="xterm -e"/>
+
 
 </launch>
